@@ -49,7 +49,7 @@ void showMatrice(matrice &A){
         cout << endl;
     }
 }
-
+//lol
 int main(){
     ifstream Fi("matrice.txt");
     createMatrice(Fi, A);
