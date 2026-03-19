@@ -1,6 +1,7 @@
 {
   "version": "0.2.0",
   "configurations": [
+    
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
@@ -8,8 +9,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Other Projects/Matrice",
-      "program": "d:/Other Projects/Matrice/build/Debug/outDebug",
+      "cwd": "d:/OtherProjects/Matrice",
+      "program": "d:/OtherProjects/Matrice/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
