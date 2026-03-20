@@ -109,12 +109,9 @@ void showMatrice(matrice &A){
 
 int main(){
     ifstream Fi("matrice.txt");
-    createMatrice(Fi, A);
-    createMatrice(Fi, B);
-    cout << "A:" << endl;
-    showMatrice(A);
-    cout << "B:" << endl;
-    showMatrice(B);
+    createM(Fi, A);
+    createM(Fi, B);
+    createM(Fi, C);
     cout << "a)" << endl;
     cout << "A+B" << endl;  
     showMatrice(sum(A, B));
@@ -162,20 +159,32 @@ int main(){
     showMatrice(sum(multiply(6, A), multiply(2, B)));
     cout << "8A-3C" << endl;
     showMatrice(sub(multiply(6, A), multiply(2, B)));
-    2A+B-4C showMatrice(sub(sum(multiply(2, A), B), multiply(4, C)));
-    2A-3B+C showMatrice(sum(sub(multiply(2, A), multiply(3, B)), C));
+    cout << "2A+B-4C" << endl;
+    showMatrice(sub(sum(multiply(2, A), B), multiply(4, C)));
+    cout << "2A-3B+C" << endl;
+    showMatrice(sum(sub(multiply(2, A), multiply(3, B)), C));
     cout << "f)" << endl;
-    A*B showMatrice(multiplyM(A, B));
-    B*A showMatrice(multiplyM(B, A));
-    A*C showMatrice(multiplyM(A, C));
-    C*A showMatrice(multiplyM(C, A));
-    B*C showMatrice(multiplyM(B, C));
-    C*B showMatrice(multiplyM(C, B));
-    A*B*C showMatrice(multiply(multiplyM(A, B), C));
-    B*A*C showMatrice(multiply(multiplyM(B, A), C));
-    C*A*B showMatrice(multiply(multiplyM(C, A), B));
+    cout << "A*B" << endl;
+    showMatrice(multiplyM(A, B));
+    cout << "B*A" << endl;
+    showMatrice(multiplyM(B, A));
+    cout << "A*C" << endl;
+    showMatrice(multiplyM(A, C));
+    cout << "C*A" << endl;
+    showMatrice(multiplyM(C, A));
+    cout << "B*C" << endl;
+    showMatrice(multiplyM(B, C));
+    cout << "C*B" << endl;
+    showMatrice(multiplyM(C, B));
+    cout << "A*B*C" << endl;
+    showMatrice(multiply(multiplyM(A, B), C));
+    cout << "B*A*C" << endl;
+    showMatrice(multiply(multiplyM(B, A), C));
+    cout << "C*A*B" << endl;
+    showMatrice(multiply(multiplyM(C, A), B));
 
     deleteM(A);
     deleteM(B);
+    deleteM(C);
     return 0;
 }
