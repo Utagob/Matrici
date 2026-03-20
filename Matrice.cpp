@@ -4,7 +4,7 @@ using namespace std;
 
 struct matrice{
     int m, n, **M;
-}X, A, B;
+}A, B, C;
 
 void createM(ifstream &Fi, matrice &C){
     Fi >> C.m >> C.n;
@@ -25,20 +25,22 @@ void deleteM(matrice &C){
 
 matrice transpus(matrice &A){
     matrice X;
-    X.m = A.m;
-    X.n = A.n;
+    X.m = A.n;
+    X.n = A.m;
     X.M = new int*[X.m];
     for(int i=0; i<X.m; i++)
     X.M[i] = new int[X.n];
-    for(int i=0; i<m; i++)
-    for(int j=0; j<n; j++)
-    X(j)(i) = A(i)(j);
+    for(int i=0; i<A.m; i++)
+    for(int j=0; j<A.n; j++)
+    X.M(j)(i) = A.M(i)(j);
     return X;
 }
 
 matrice sum(matrice &A, matrice &B){
-    if(A.m != B.m || A.n != B.n) cout << "Matricilie sunt de marimi diferite";
-    else{
+    if(A.m != B.m || A.n != B.n){
+        cout << "Matricilie sunt de marimi diferite";
+        exit(1);
+    } else {
         matrice X;
         X.m = A.m;
         X.n = A.n;
@@ -55,8 +57,10 @@ matrice sum(matrice &A, matrice &B){
 }
 
 matrice sub(matrice &A, matrice &B){
-    if(A.m != B.m || A.n != B.n) cout << "Matricilie sunt de marimi diferite";
-    else{
+    if(A.m != B.m || A.n != B.n){
+        cout << "Matricilie sunt de marimi diferite";
+        exit(1);
+    } else {
         matrice X;
         X.m = A.m;
         X.n = A.n;
@@ -133,44 +137,45 @@ int main(){
     showMatrice(sum(sum(A, B), C));
     cout << "b)" << endl;
     cout << "2A+B" << endl;
-    showMatrice(sum(multiply(2, A), B);
+    showMatrice(sum(multiply(2, A), B));
     cout << "3B+4C" << endl; 
-    showMatrice(sum(multiply(3, B), multiply(4, C));
+    showMatrice(sum(multiply(3, B), multiply(4, C)));
     cout << "2A-3B" << endl; 
-    showMatrice(sub(multiply(2, A), multiply(3, B));
+    showMatrice(sub(multiply(2, A), multiply(3, B)));
     cout << "c)" << endl;
-    count << "4A" << endl; showMatrice(multiply(4, A));
+    cout << "4A" << endl; 
+    showMatrice(multiply(4, A));
     cout << "2B" << endl; 
     showMatrice(multiply(2, B));
     cout << "4C" << endl;
     showMatrice(multiply(4, C));
     cout << "5A" << endl; 
     showMatrice(multiply(5, A));
-    count << "6B" << endl; 
+    cout << "6B" << endl; 
     showMatrice(multiply(6, B));
-    count << "3C" << endl; 
+    cout << "3C" << endl; 
     showMatrice(multiply(3, C));
     cout << "d)" << endl;
     cout << "A-B+C" << endl; 
     showMatrice(sum(sub(A, B), C));
-    count << "A+B-C" << endl; 
+    cout << "A+B-C" << endl; 
     showMatrice(sub(sum(A, B), C));
     cout << "A-C+B" << endl;
     showMatrice(sum(sub(A, C), B));
     cout<< "A+B-2C" << endl;
-    showMatrice(sub(sum(A, B), multiply (2, C));
+    showMatrice(sub(sum(A, B), multiply (2, C)));
     cout << "3A+B+C" << endl;
     showMatrice(sum(sum(multiply(3, A), B), C));
-    count << "4A-B+C" << endl;
+    cout << "4A-B+C" << endl;
     showMatrice(sum(sub(multiply(4, A), B), C));
-    count << "2A+4B" << endl;
+    cout << "2A+4B" << endl;
     showMatrice(sum(multiply(2, A), multiply(4, B)));
     cout << "3A-B+2C" << endl;
-    showMatrice(sum(sub(multiply(3, A), B), multiply(2, C);
+    showMatrice(sum(sub(multiply(3, A), B), multiply(2, C)));
     cout << "6A+2B" << endl;
     showMatrice(sum(multiply(6, A), multiply(2, B)));
     cout << "8A-3C" << endl;
-    showMatrice(sub(multiply(6, A), multiply(2, B)));
+    showMatrice(sub(multiply(8, A), multiply(3, C)));
     cout << "2A+B-4C" << endl;
     showMatrice(sub(sum(multiply(2, A), B), multiply(4, C)));
     cout << "2A-3B+C" << endl;
@@ -189,15 +194,15 @@ int main(){
     cout << "C*B" << endl;
     showMatrice(multiplyM(C, B));
     cout << "A*B*C" << endl;
-    showMatrice(multiply(multiplyM(A, B), C));
+    showMatrice(multiplyM(multiplyM(A, B), C));
     cout << "B*A*C" << endl;
-    showMatrice(multiply(multiplyM(B, A), C));
+    showMatrice(multiplyM(multiplyM(B, A), C));
     cout << "C*A*B" << endl;
-    showMatrice(multiply(multiplyM(C, A), B));
+    showMatrice(multiplyM(multiplyM(C, A), B));
     cout << "e)" << endl;
     cout << "At+Bt" << endl;
-    showMatrice(sum(transpus(A), transpus(B));
-    cout << "C*A*B" << endl;
+    showMatrice(sum(transpus(A), transpus(B)));
+    cout << "2A+4Bt" << endl;
     showMatrice(sum(multiply(2, transpus(A)), multiply(4, transpus(B))));
     cout << "k)" << endl;
     cout << "At*B" << endl;
