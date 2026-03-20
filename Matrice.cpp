@@ -7,7 +7,7 @@ struct matrice{
     int **M;
 }X, A, B;
 
-void createMatrice(ifstream &Fi, matrice &C){
+void createM(ifstream &Fi, matrice &C){
     Fi >> C.m >> C.n;
     C.M = new int*[C.m];
     for(int i=0; i<C.m; i++)
@@ -18,7 +18,7 @@ void createMatrice(ifstream &Fi, matrice &C){
     Fi >> C.M[i][j];
 }
 
-void deleteMatrice(matrice &C){
+void deleteM(matrice &C){
     for(int i=0; i<C.m; i++)
     delete[] C.M[i];
     delete[] C.M;
@@ -42,7 +42,7 @@ matrice sum(matrice &A, matrice &B){
     }
 }
 
-matrice substraction(matrice &A, matrice &B){
+matrice sub(matrice &A, matrice &B){
     if(A.m != B.m || A.n != B.n) cout << "Matricilie sunt de marimi diferite";
     else{
         matrice X;
@@ -103,6 +103,8 @@ void showMatrice(matrice &A){
             cout << A.M[i][j] << " ";
         cout << endl;
     }
+    cout << endl;
+    deleteM(A);
 }
 
 int main(){
@@ -111,16 +113,67 @@ int main(){
     createMatrice(Fi, B);
     cout << "A:" << endl;
     showMatrice(A);
-    cout << endl;
     cout << "B:" << endl;
     showMatrice(B);
-    cout << endl;
+    cout << "a)" << endl;
+    cout << "A+B" << endl;  
+    showMatrice(sum(A, B));
+    cout << "B+C" << endl;
+    showMatrice(sum(B, C));
+    cout << "A+B+C" << endl;
+    showMatrice(sum(sum(A, B), C));
+    cout << "b)" << endl;
+    cout << "2A+B" << endl;
+    showMatrice(sum(multiply(2, A), B);
+    cout << "3B+4C" << endl; 
+    showMatrice(sum(multiply(3, B), multiply(4, C));
+    cout << "2A-3B" << endl; 
+    showMatrice(sub(multiply(2, A), multiply(3, B));
+    cout << "c)" << endl;
+    count << "4A" << endl; showMatrice(multiply(4, A));
+    cout << "2B" << endl; 
+    showMatrice(multiply(2, B));
+    cout << "4C" << endl;
+    showMatrice(multiply(4, C));
+    cout << "5A" << endl; 
+    showMatrice(multiply(5, A));
+    count << "6B" << endl; 
+    showMatrice(multiply(6, B));
+    count << "3C" << endl; 
+    showMatrice(multiply(3, C));
+    cout << "d)" << endl;
+    cout << "A-B+C" << endl; 
+    showMatrice(sum(sub(A, B), C));
+    count << "A+B-C" << endl; 
+    showMatrice(sub(sum(A, B), C));
+    cout << "A-C+B" << endl;
+    showMatrice(sum(sub(A, C), B));
+    cout<< "A+B-2C" << endl;
+    showMatrice(sub(sum(A, B), multiply (2, C));
+    cout << "3A+B+C" << endl;
+    showMatrice(sum(sum(multiply(3, A), B), C));
+    count << "4A-B+C" << endl;
+    showMatrice(sum(sub(multiply(4, A), B), C));
+    count << "2A+4B" << endl;
+    showMatrice(sum(multiply(2, A), multiply(4, B)));
+    cout << "3A-B+2C" << endl;
+    showMatrice(sum(sub(multiply(3, A), B), multiply(2, C);
+    6A+2B showMatrice(sum(multiply(6, A), multiply(2, B)));
+    8A-3C showMatrice(sub(multiply(6, A), multiply(2, B)));
+    2A+B-4C showMatrice(sub(sum(multiply(2, A), B), multiply(4, C)));
+    2A-3B+C showMatrice(sum(sub(multiply(2, A), multiply(3, B)), C));
+    cout << "f)" << endl;
+    A*B showMatrice(multiplyM(A, B));
+    B*A showMatrice(multiplyM(B, A));
+    A*C showMatrice(multiplyM(A, C));
+    C*A showMatrice(multiplyM(C, A));
+    B*C showMatrice(multiplyM(B, C));
+    C*B showMatrice(multiplyM(C, B));
+    A*B*C showMatrice(multiply(multiplyM(A, B), C));
+    B*A*C showMatrice(multiply(multiplyM(B, A), C));
+    C*A*B showMatrice(multiply(multiplyM(C, A), B));
 
-    X = multiplyM(A, B);
-    showMatrice(X);
-
-    deleteMatrice(A);
-    deleteMatrice(B);
-    deleteMatrice(X);
+    deleteM(A);
+    deleteM(B);
     return 0;
 }
