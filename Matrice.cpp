@@ -3,8 +3,7 @@
 using namespace std;
 
 struct matrice{
-    int m, n;
-    int **M;
+    int m, n, **M;
 }X, A, B;
 
 void createM(ifstream &Fi, matrice &C){
@@ -22,6 +21,19 @@ void deleteM(matrice &C){
     for(int i=0; i<C.m; i++)
     delete[] C.M[i];
     delete[] C.M;
+}
+
+matrice transpus(matrice &A){
+    matrice X;
+    X.m = A.m;
+    X.n = A.n;
+    X.M = new int*[X.m];
+    for(int i=0; i<X.m; i++)
+    X.M[i] = new int[X.n];
+    for(int i=0; i<m; i++)
+    for(int j=0; j<n; j++)
+    X(j)(i) = A(i)(j);
+    return X;
 }
 
 matrice sum(matrice &A, matrice &B){
@@ -182,7 +194,26 @@ int main(){
     showMatrice(multiply(multiplyM(B, A), C));
     cout << "C*A*B" << endl;
     showMatrice(multiply(multiplyM(C, A), B));
+    cout << "e)" << endl;
+    cout << "At+Bt" << endl;
+    showMatrice(sum(transpus(A), transpus(B));
+    cout << "C*A*B" << endl;
+    showMatrice(sum(multiply(2, transpus(A)), multiply(4, transpus(B))));
+    cout << "k)" << endl;
+    cout << "At*B" << endl;
+    showMatrice(multiplyM(transpus(A), B));
+    cout << "Bt*A" << endl;
+    showMatrice(multiplyM(transpus(B), A));
+    cout << "At*2B" << endl;
+    showMatrice(multiplyM(transpus(A), multiply(2, B)));
+    cout << "At*C" << endl;
+    showMatrice(multiplyM(transpus(A), C));
+    cout << "Bt*2A" << endl;
+    showMatrice(multiplyM(transpus(B), multiply(2, A)));
+    cout << "Bt*C" << endl;
+    showMatrice(multiplyM(transpus(B), C));
 
+    
     deleteM(A);
     deleteM(B);
     deleteM(C);
