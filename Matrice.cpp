@@ -158,8 +158,10 @@ int main(){
     showMatrice(sum(multiply(2, A), multiply(4, B)));
     cout << "3A-B+2C" << endl;
     showMatrice(sum(sub(multiply(3, A), B), multiply(2, C);
-    6A+2B showMatrice(sum(multiply(6, A), multiply(2, B)));
-    8A-3C showMatrice(sub(multiply(6, A), multiply(2, B)));
+    cout << "6A+2B" << endl;
+    showMatrice(sum(multiply(6, A), multiply(2, B)));
+    cout << "8A-3C" << endl;
+    showMatrice(sub(multiply(6, A), multiply(2, B)));
     2A+B-4C showMatrice(sub(sum(multiply(2, A), B), multiply(4, C)));
     2A-3B+C showMatrice(sum(sub(multiply(2, A), multiply(3, B)), C));
     cout << "f)" << endl;
